@@ -1,0 +1,43 @@
+var orderString = "";
+
+
+$(document).ready(function() {
+
+
+  $("#ticket").click(function(e){
+    e.preventDefault()
+    e.stopPropagation();
+
+  	$('#content').html("<%= j (render 'ticket') %>");	
+  	$(".customer-ticket a").css("color","#cd7971");
+  	$(".customer-ticket").css('border-bottom', 'solid 2px #cd7971');
+  	$(".customer-order a").css("color","#C0C0C0");
+  	$(".customer-order").css('border-bottom', 'solid 2px #C0C0C0');
+  })
+
+
+  $("#order").click(function(e){
+    e.preventDefault()
+    e.stopPropagation();
+    
+  	$('#content').html("<%= j (render 'order') %>");	
+  	$(".customer-order a").css("color","#cd7971");
+  	$(".customer-order").css('border-bottom', 'solid 2px #cd7971');
+  	$(".customer-ticket a").css("color","#C0C0C0");
+  	$(".customer-ticket").css('border-bottom', 'solid 2px #C0C0C0');
+  })
+
+  $('.submit').click(function(e){
+    e.preventDefault()
+    e.stopPropagation();
+
+  	var client = new WebSocket("ws://localhost:2000/");
+  //     var order = $(this).parent().find('.order').val();
+      // var res_id = $(this).parent().find('#order_restaurant_id').val();
+      client.addEventListener("open", function(val){
+          client.send("You have an order from " + readCookie('user_name') + " admin id: " + readCookie('admin_id'))
+      });
+  })
+
+
+})

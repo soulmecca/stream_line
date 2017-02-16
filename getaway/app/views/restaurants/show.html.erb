@@ -1,0 +1,82 @@
+
+<body class="restaurant-page">
+
+	<div id="sidr-right">
+	  <!-- Your content -->
+	  <ul>
+	    <li><%= link_to 'LOGOUT', "/logout/#{@restaurant.id}", method: :delete%></li>
+	    <!-- <li><a href="#">EDIT PROFILE</a></li> -->
+	  </ul>
+	</div>
+
+	<div class ="pure-g">
+		<!-- Navigation Bar -->
+		<div class = "pure-u-1">
+			<div class="nav-bar-container">
+				<div class="pure-u-7-24">
+					<div class="nav-bar-logo">
+
+					</div>
+				</div>
+				<div class="pure-u-15-24">
+					<a id="right-menu" href="#right-menu">
+						<div class="nav-bar-option-mobile">
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(function() {
+			    $('#right-menu').sidr({
+			      name: 'sidr-right',
+			      side: 'right'
+			    });
+			});
+		</script>
+
+
+		<!-- Restaurant Banner -->
+
+		<div class="pure-u-1">
+			<div class="restaurant-banner">
+				Welcome, <%= @restaurant.name %>
+			</div>
+		</div>
+
+
+		<!-- Restaurant Controller -->
+		<div class="pure-u-1">
+			<div class="restaurant-menu-bar">
+				<div class="pure-u-3-24">
+					<div class="restaurant-queue" id="queue">
+						<%= link_to 'Queue', restaurant_path(@restaurant), remote: true %>
+					</div>
+				</div>
+				<div class="pure-u-3-24">
+					<div class="restaurant-map" id="map">
+						<%= link_to 'Map', restaurant_path(@restaurant), remote: true %>
+					</div>
+				</div>
+				<div class="pure-u-3-24">
+					<div class="restaurant-menu" id="menu">
+						<%= link_to 'Menu', restaurant_path(@restaurant), remote: true %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- order partial with modal -->
+		<%= render partial: 'order'%>
+		<!-- Restaurant -->
+		<div class="pure-u-1" >
+			<div class="controller-content" id="content">	
+				<%= render 'queue' %>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+

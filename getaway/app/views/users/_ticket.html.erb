@@ -1,0 +1,19 @@
+<div class='customer-ticket-content'>
+	<div class='ticket-number-header'>
+		Ticket Number
+	</div>
+	<div class="ticket-number-box">
+		<%=@visit.id%>
+	</div>
+	<!-- <div class="waiting-time">
+		<h3>Waiting Time: </h3>
+	</div> -->
+	<br>
+	<div class="pure-u-1">
+		<%= form_tag( "/logout/#{@restaurant.id}" , method: "delete") do %>
+			<input name="_method" type="hidden" value="delete">
+				<button id="drop-queue">DROP</button>
+		<% end %>
+	</div>
+</div>
+<br>

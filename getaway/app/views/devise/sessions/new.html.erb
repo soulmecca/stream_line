@@ -1,0 +1,57 @@
+
+<body class="login-page">
+  <div class="pure-g">
+    <div class ="content-wrapper">
+      <div class="pure-u-1">
+        <div class="login-content">
+          <div class="pure-u-1">
+            <div class="login-logo">
+
+            </div>
+          </div>
+
+          <%= form_tag("/users/sign_in", method: :post) do  %>
+          <%= hidden_field_tag :id, params[:id] %>
+          <div class="pure-u-1">
+            <div class="login-username">
+              <div class="pure-u-1-5">
+                <div class="login-username-icon">
+                </div>
+              </div>
+              <div class="pure-u-3-5">
+                <div class="login-username-field">
+                  <%= text_field_tag "user[email]" ,nil, placeholder: "Email" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pure-u-1">
+            <div class="login-password">
+              <div class="pure-u-1-5">
+                <div class="login-password-icon">
+                </div>
+              </div>
+            <div class="pure-u-3-5">
+              <div class="login-password-field">
+              <%= password_field_tag 'user[password]', nil, id: 'user_password',placeholder: "Password" %>
+              </div>
+            </div>
+          </div>
+          <div class="pure-u-1">
+            <div class="login-button">
+              
+              <%= submit_tag "LOG IN" %>
+            </div>
+          </div>
+           <% end %>
+           <div class="pure-u-1">
+            <div class="login-signup">
+              No Account? Sign up <%= link_to 'Here', new_user_registration_path%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+

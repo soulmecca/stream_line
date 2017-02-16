@@ -1,0 +1,44 @@
+$(document).ready(function() {
+  
+	$("#queue").off().on('click',function(event){
+
+		$('#content').empty().append("<%= j (render 'queue') %>");
+		$("#queue a").css("color","#58759d")
+		$(".restaurant-queue").css('border-bottom', 'solid 2px #58759d');
+		$("#map a").css("color","#C0C0C0");
+		$(".restaurant-map").css('border-bottom', 'solid 2px #C0C0C0');
+		$("#menu a").css("color","#C0C0C0");
+		$(".restaurant-menu").css('border-bottom', 'solid 2px #C0C0C0');
+
+	})
+
+
+	$('#map').off().on('click',function(event){
+		
+		$('#content').empty().append("<%= j (render 'map') %>")
+		$("#map a").css("color","#58759d");
+		$(".restaurant-map").css('border-bottom', 'solid 2px #58759d');
+		$("#queue a").css("color","#C0C0C0");
+		$(".restaurant-queue").css('border-bottom', 'solid 2px #C0C0C0');
+		$("#menu a").css("color","#C0C0C0");
+		$(".restaurant-menu").css('border-bottom', 'solid 2px #C0C0C0');
+
+	})
+
+
+	$('#menu').off().on('click',function(event){
+		
+		$('#content').empty().append("<%= j (render 'menu') %>")
+		$("#menu a").css("color","#58759d");
+		$(".restaurant-menu").css('border-bottom', 'solid 2px #58759d');
+		$("#map a").css("color","#C0C0C0");
+		$(".restaurant-map").css('border-bottom', 'solid 2px #C0C0C0');
+		$("#queue a").css("color","#C0C0C0");
+		$(".restaurant-queue").css('border-bottom', 'solid 2px #C0C0C0');
+		
+	})
+
+	// AJAX for retrieving @order data
+	$("#order_list").html("<%= escape_javascript(render partial: 'order_list', locals: { orders: @orders } ) %>"); 
+
+	})

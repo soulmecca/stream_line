@@ -1,0 +1,20 @@
+<% if orders %>
+  
+  <% orders.each do |menu| %>
+
+  <tr>
+    <td><%=menu.menu_item.name%></td>
+    <td>$<%=menu.menu_item.price%></td>
+  </tr>
+  
+  <% end %>
+  <tr>
+    <% if @total_price > 0 %>
+      <td>Total Amount:</td>
+      <td> $<%= @total_price%> </td>
+    <% else %>
+      <td>No orders yet</td>  
+      <td></td>
+    <% end %>
+  </tr>
+<% end %>

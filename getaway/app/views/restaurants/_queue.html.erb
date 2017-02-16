@@ -1,0 +1,38 @@
+
+<div class="pure-u-1">
+	<div class="restaurant-content-header">
+		Queue
+	</div>
+	<div class="next-button">
+		<button id="next" name = "next" value = "<%=@waiting_list.first.user.id if @waiting_list.first%> <%=@waiting_list.first.user.name if @waiting_list.first %>"> NEXT </button>
+	</div>
+</div>
+<div class="restaurant-queue-content">
+	<table id="queue-table">
+	  <thead>
+	    <tr>
+	      <th>Ticket</th>
+	      <th>Name</th>
+	      <th>Orders</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	  	<% @waiting_list.each do |customer| %>
+		  	<tr>
+			    <td>#<%=customer.id%></td>
+
+			    <% if customer.user.name%>
+			    	<td><%=customer.user.name%></td>
+			    <% else %>	
+			    	<td><%=customer.user.email%></td>
+			    <% end %>
+
+		   		<td class="orders"> 
+						<%= link_to '<button type="button" id="view">View</button>'.html_safe, "/restaurants/#{@restaurant.id}/#{customer.user_id}", :remote => true%>
+				</tr>
+			<% end %>
+	  </tbody>
+</table>
+</div>
+
